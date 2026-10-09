@@ -18,7 +18,6 @@ The project is about **data handling, descriptive statistics and data visualizat
 | Course | COS 103 |
 | Level | 100 Level |
 | Institution | University of Ibadan |
-| Lecturer / TA | [LECTURER NAME] |
 | Session |  2025/2026 |
 
 ## 3. Project Objectives
@@ -195,12 +194,3 @@ It ends with `DONE`.
 ### 6. Feature Correlation
 
 ![Correlation heatmap](outputs/figures/correlation_heatmap.png)
-
-### 7. Generated Tables (optional)
-
-![Species descriptive statistics CSV](screenshots/csv-species-statistics.png)
-
-
-## 18. License
-
-This project is released under the **MIT License**. See the [LICENSE](LICENSE) file. Replace `Martin Olutade Fiyinfoluwa` in `LICENSE` with your name. The Iris dataset belongs to its original authors and repositories (see `data/README.md`).
