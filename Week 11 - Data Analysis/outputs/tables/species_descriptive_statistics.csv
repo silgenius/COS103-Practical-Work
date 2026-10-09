@@ -1,0 +1,13 @@
+Feature,Species,count,mean,median,std,min,Q1_25%,Q3_75%,max,IQR
+Sepal Length (cm),setosa,50,5.006,5.0,0.3525,4.3,4.8,5.2,5.8,0.4
+Sepal Width (cm),setosa,50,3.418,3.4,0.381,2.3,3.125,3.675,4.4,0.55
+Petal Length (cm),setosa,50,1.464,1.5,0.1735,1.0,1.4,1.575,1.9,0.175
+Petal Width (cm),setosa,50,0.244,0.2,0.1072,0.1,0.2,0.3,0.6,0.1
+Sepal Length (cm),versicolor,50,5.936,5.9,0.5162,4.9,5.6,6.3,7.0,0.7
+Sepal Width (cm),versicolor,50,2.77,2.8,0.3138,2.0,2.525,3.0,3.4,0.475
+Petal Length (cm),versicolor,50,4.26,4.35,0.4699,3.0,4.0,4.6,5.1,0.6
+Petal Width (cm),versicolor,50,1.326,1.3,0.1978,1.0,1.2,1.5,1.8,0.3
+Sepal Length (cm),virginica,50,6.588,6.5,0.6359,4.9,6.225,6.9,7.9,0.675
+Sepal Width (cm),virginica,50,2.974,3.0,0.3225,2.2,2.8,3.175,3.8,0.375
+Petal Length (cm),virginica,50,5.552,5.55,0.5519,4.5,5.1,5.875,6.9,0.775
+Petal Width (cm),virginica,50,2.026,2.0,0.2747,1.4,1.8,2.3,2.5,0.5
