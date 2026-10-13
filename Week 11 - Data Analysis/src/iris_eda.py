@@ -1,47 +1,19 @@
-"""
-Exploratory Data Analysis (EDA) on the Iris Dataset
-===================================================
-Course : COS 103 (100 Level), University of Ibadan, Nigeria
-
-What this program does
-----------------------
-1. Loads the Iris dataset from data/Iris.csv
-2. Inspects its structure (head, tail, shape, types, missing values, duplicates)
-3. Calculates descriptive statistics (overall and per species)
-4. Creates and saves 10 visualizations as high-resolution PNG files
-5. Saves summary tables as CSV files
-
-How to run (from the project root folder):
-    python src/iris_eda.py          (Windows)
-    python3 src/iris_eda.py         (Linux / macOS)
-"""
-
-# ---------------------------------------------------------------------------
-# 1. IMPORTS
-# ---------------------------------------------------------------------------
 import sys
 from pathlib import Path
 
 import matplotlib
 
-matplotlib.use("Agg")  # Save plots to files without opening windows (works everywhere)
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
 
-# ---------------------------------------------------------------------------
-# 2. SETTINGS AND FILE PATHS
-# ---------------------------------------------------------------------------
-# Path(__file__) is this script's location. Its parent is "src", and the parent
-# of "src" is the project root. This means the script works no matter which
-# folder you start it from, and no paths need manual editing.
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_FILE = PROJECT_ROOT / "data" / "Iris.csv"
 FIGURES_DIR = PROJECT_ROOT / "outputs" / "figures"
 TABLES_DIR = PROJECT_ROOT / "outputs" / "tables"
 
-# The four measurement columns in the CSV, and the nicer names we use on plots
 RENAME_MAP = {
     "SepalLengthCm": "Sepal Length (cm)",
     "SepalWidthCm": "Sepal Width (cm)",
@@ -51,11 +23,10 @@ RENAME_MAP = {
 FEATURES = list(RENAME_MAP.values())
 SPECIES_ORDER = ["setosa", "versicolor", "virginica"]
 
-# One fixed colour per species so every plot uses the same colours
 SPECIES_COLOURS = {
-    "setosa": "#1f77b4",      # blue
-    "versicolor": "#ff7f0e",  # orange
-    "virginica": "#2ca02c",   # green
+    "setosa": "#1f77b4",      
+    "versicolor": "#ff7f0e",  
+    "virginica": "#2ca02c",
 }
 
 DPI = 300  # resolution of saved PNG files
@@ -97,9 +68,8 @@ def save_table(table, filename, keep_index=True):
     print(f"  Saved table : {path.relative_to(PROJECT_ROOT)}")
 
 
-# ---------------------------------------------------------------------------
-# 3. LOADING THE DATA
-# ---------------------------------------------------------------------------
+
+# LOADING THE DATA
 def load_data():
     """Read the CSV file and tidy up the column and species names."""
     if not DATA_FILE.exists():
@@ -130,9 +100,7 @@ def load_data():
     return df
 
 
-# ---------------------------------------------------------------------------
-# 4. INITIAL INSPECTION
-# ---------------------------------------------------------------------------
+# INITIAL INSPECTION
 def inspect_data(df):
     """Section A: look at the structure and quality of the data."""
     print_heading("A. INITIAL INSPECTION")
@@ -183,9 +151,8 @@ def inspect_data(df):
     print(f"Species names: {df['Species'].unique().tolist()}")
 
 
-# ---------------------------------------------------------------------------
-# 5. SUMMARY STATISTICS
-# ---------------------------------------------------------------------------
+
+# SUMMARY STATISTICS
 def build_summary_table(data):
     """Return count, mean, median, std, min, max, Q1, Q3 and IQR for each feature."""
     summary = pd.DataFrame({
@@ -206,7 +173,6 @@ def summary_statistics(df):
     """Section B: overall and species-wise descriptive statistics."""
     print_heading("B. SUMMARY STATISTICS")
 
-    # Display options so wide tables are not cut off
     pd.set_option("display.width", 200)
     pd.set_option("display.max_columns", None)
 
@@ -242,16 +208,13 @@ def summary_statistics(df):
     return correlation
 
 
-# ---------------------------------------------------------------------------
-# 6. VISUALIZATIONS
-# ---------------------------------------------------------------------------
+# VISUALIZATIONS
 def plot_species_count(df):
     """1. Bar chart of the number of samples per species."""
     fig, ax = plt.subplots(figsize=(10, 7))
     sns.countplot(data=df, x="Species", order=SPECIES_ORDER, hue="Species",
                   hue_order=SPECIES_ORDER, palette=SPECIES_COLOURS,
                   legend=False, ax=ax)
-    # Write the count on top of every bar
     for bar in ax.patches:
         ax.annotate(f"{int(bar.get_height())}",
                     (bar.get_x() + bar.get_width() / 2, bar.get_height()),
@@ -394,9 +357,6 @@ def create_all_plots(df, correlation):
     plot_mean_comparison(df)
 
 
-# ---------------------------------------------------------------------------
-# 7. MAIN PROGRAM
-# ---------------------------------------------------------------------------
 def main():
     print_heading("IRIS DATASET - EXPLORATORY DATA ANALYSIS (COS 103)")
     print(f"Project folder : {PROJECT_ROOT}")
